@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<%-- modal 하귀 위해서 2번째 script도 가져오고 부트스트랩3의 stylesheet css 가져와야한다 --%>
+<%-- modal 하위 위해서 2번째 script도 가져오고 부트스트랩3의 stylesheet css 가져와야한다 --%>
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Cute+Font&family=Diphylleia&family=Dokdo&family=Nanum+Brush+Script&family=Nanum+Gothic+Coding&family=Noto+Sans+KR&display=swap" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
@@ -22,10 +22,10 @@
 		$("#btnmdel").attr("num",num); //탈퇴확인버튼에 num값을 넘겨주면 나중에 다른 이벤트로 num값 넘겨줄 수 있기 때문
 		$("#myModal").modal();
 		
-		/* 선생님 버전은 밑쪽에 따로 script 주기
+		//선생님 버전은 밑쪽에 따로 script 주기
 		$("#btnmdel").click(function(){
 			location.href='deleteMember.jsp?num='+num;
-		}); */
+		});
 	}
 </script>
 </head>
@@ -121,15 +121,5 @@ onclick="location.href='logoutAction.jsp'">logout</button>
       
     </div>
   </div>
- 
- 
-<script type="text/javascript">
- 	$("#btnmdel").click(function(){
- 		
- 		//버튼에 있는 num값 읽어오기
- 		
- 	})
-</script>
-  
 </body>
 </html>
