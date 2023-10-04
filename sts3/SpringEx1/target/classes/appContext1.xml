@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+	<!-- xml에서는 bean으로 클래스를 설정해줘야 생성 및 출력가능 -->
+	<bean id="mesBean1" class="spring.di.ex1.Message1"></bean>
+	<bean id="mesBean2" class="spring.di.ex1.Message2"></bean>
+	
+</beans>
