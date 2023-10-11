@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+	<!-- <bean id="mydao" class="spring.anno.ex4.MyDao"/>
+	<bean id="logic" class="spring.anno.ex4.LogicController">
+		<constructor-arg ref="mydao"/>
+	</bean> -->
+	
+	<!-- @Autowired 후 이 파일의 위치를 명확하게 알려줘야함 / 이 파일을 선택 후 밑에 보면 Namespaces로 가서 context를 체크해줘야함 -->
+	<!-- 패키지등록 ,(컴마)로 나열하거나 *로 사용 가능 -->
+	<!-- base-package="spring.anno.*" -> spring.anno. 으로 시작하는 모든 패키지를 등록 -->
+	<context:component-scan base-package="spring.anno.*"/>
+</beans>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<!-- namespace는 겹칠 수 있을 때 변수로 지어주는 경우 사용
+	 이 namespace는 mybatis-config.xml에 있는 alias와 상관 없는 것
+	 
+	 지금 밑처럼 패키지명.dao로 해주면 MyCarDao에서 String 변수명으로 받아줘서 사용가능하다 -->
+<mapper namespace="spring.mysql.mycar.MyCarDao">
+	<!-- 겹치지 않는 id로 만드는게 중요하다
+		 밑에 select태그 안에 resultType은 dto를 의미, 패키지까지 작성해야함...mybatis-config.xml에서 이것들을 alias를 설정해줌
+		 dto가 늘어날 수록 mybatis-config.xml에 alias 등록해줘야함
+		 예를 들면 resultType에 반환값을 적어주는데 java method 에서 void는 resultType을 안써주면된다
+		 
+		 
+		 id는 고유한 이름이어야해서 겹치면 안됨/resultType은 return 타입을 적어주는 것(인자값이라고 볼 수도 있음) -->
+	<select id="getAllListOfMyCar" resultType="mdto">
+		select * from mycar order by num desc
+	</select>
+	
+	<!-- 전체개수얻기 -->
+	<select id="getTotalCount" resultType="int">
+		select count(*) from mycar
+	</select>
+	
+	<!-- insert -->
+	<insert id="insertOfMycar" parameterType="mdto">
+		insert into mycar (carname,carprice,carcolor,carguip) values(#{carname},#{carprice},#{carcolor},#{carguip})
+	</insert>
+	
+	<delete id="deleteOfMyCar" parameterType="String">
+		delete from mycar where num=#{num}
+	</delete>
+</mapper>

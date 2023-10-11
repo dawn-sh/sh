@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+	<!-- SawonData설정 -->
+	<bean id="sdata1" class="spring.di.ex3.SawonData">
+		<constructor-arg value="최성현"/>
+		<property name="pay" value="2500000"/>
+		<property name="ipsaday" value="2021-01-01"/>
+	</bean>
+	<!-- Sawon설정 -->
+	<!-- reference주입을 안하면 에러가 뜨는 아이 -->
+	<bean id="sawon" class="spring.di.ex3.Sawon">
+		<constructor-arg ref="sdata1"/>
+	</bean>
+</beans>

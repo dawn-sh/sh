@@ -9,6 +9,9 @@
 	<configs>
 		<config>src/main/resources/helloContext.xml</config>
 		<config>src/main/resources/appContext1.xml</config>
+		<config>src/main/resources/appContext2.xml</config>
+		<config>src/main/resources/appContext3.xml</config>
+		<config>src/main/resources/annoContext4.xml</config>
 	</configs>
 	<autoconfigs>
 		<config>src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml</config>

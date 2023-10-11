@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+	<bean id="my" class="spring.di.ex2.MyInfo">
+		<constructor-arg value="민희"/>
+		<constructor-arg value="22"/>
+		<constructor-arg>
+			<value>강남구 역삼동 쌍용교육센터</value>
+		</constructor-arg>
+	</bean>
+
+	<bean id="person" class="spring.di.ex2.Person">
+		<!-- MyInfo는 생성자주입
+			 reference주입 a라는 것을 그대로 가져와서 주입하는 것
+			 bean에 설정한 id/name 값을 ref에 넣어줘야한다 -->
+		<constructor-arg ref="my"/>
+		<!-- 학교명은 setter주입 -->
+		<property name="schoolName" value="쌍용고등학교"/>
+	</bean>
+</beans>
