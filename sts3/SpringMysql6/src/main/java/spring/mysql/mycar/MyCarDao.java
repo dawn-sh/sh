@@ -52,4 +52,16 @@ public class MyCarDao {
 	{
 		session.delete("deleteOfMyCar", num);
 	}
+	
+	
+	//여기서 MyCarDto가 Mapper의 resultType / String num이 parameterType
+	public MyCarDto getData(String num)
+	{
+		return session.selectOne("selectOneOfMyCar", num);
+	}
+	
+	public void updateCar(MyCarDto dto)
+	{
+		session.update("updateOfMyCar", dto);
+	}
 }

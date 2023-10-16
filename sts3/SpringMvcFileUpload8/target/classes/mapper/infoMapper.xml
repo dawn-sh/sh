@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="info">
+	<select id="selectTotalCountOfMyInfo" resultType="int">
+		select count(*) from myinfo
+	</select>
+	<insert id="insertOfMyInfo" parameterType="indto">
+		insert into myinfo (name,driver,addr,photo,gaipday) values(#{name},#{driver},#{addr},#{photo},now())
+	</insert>
+	<!-- <select id="selectAllOfMyInfo" resultType="indto">
+		select * from myinfo order by num
+	</select> -->
+	<select id="selectOneOfMyInfo" resultType="indto" parameterType="String">
+		select * from myinfo where num=#{num}
+	</select>
+	<update id="updateOfMyInfo" parameterType="indto">
+		update myinfo set name=#{name},driver=#{driver},addr=#{addr}
+		<if test="photo!=null"> <!-- photo!='no' 조건이 no일 경우 / 두가지 경우 모두 no나 null이 아닐경우 즉 사진이 있는 경우만 수정해준다는 조건
+									 이렇게 조건 주면 기존 사진을 수정폼에 불러오지 않고 수정을 안해도 기존 사진이 남아있을 수 있다 -->
+		,photo=#{photo}
+		</if>
+		where num=#{num}
+	</update>
+	<delete id="deleteOfMyInfo" parameterType="String">
+		delete from myinfo where num=#{num}
+	</delete>
+	
+	<!-- 검색 리스트 / 2개 이상의 인자값을 넘겨야 할땐 map 사용 -->
+	<select id="selectAllOfMyInfo" resultType="indto" parameterType="Map">
+		select * from myinfo
+		<!-- form의 검색칸이 null이 아닐때만
+			 if문에 안걸리면 일반 리스트 출력 / if문에 걸리면 검색효과+출력 -->
+		<if test="search!=null">
+			<!-- 달러{}은 컬럼을 의미
+				 where {검색 기준이 될 필드명} like concat('%',?,'%'); -->
+			where ${title} like concat ('%',#{search},'%')
+		</if>
+		order by num asc
+	</select>
+</mapper>

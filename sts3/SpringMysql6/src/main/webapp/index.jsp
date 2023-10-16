@@ -12,6 +12,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<c:redirect url="kakao/list"/>
+	<%-- <c:redirect url="kakao/list"/> --%>
+	<button type="button" class="btn btn-info"
+	style="width: 200px;" onclick="location.href='kakao/list'">자동차 정보목록</button>
+	<br><br>
+	<button type="button" class="btn btn-info"
+	style="width: 200px;" onclick="location.href='member/list'">자동차 구입고객 명단</button>
 </body>
 </html>

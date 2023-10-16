@@ -53,10 +53,33 @@ public class CarController {
 		return "redirect:list";
 	}
 	
+	//delete
+	//Controller을 통해서 가는 것이기 때문에 redirect:list로 위에 있는 kakao/list mapping으로 가게 되는 것이다
 	@GetMapping("/kakao/delete")
 	public String delete(String num)
 	{
 		dao.deleteCar(num);
+		
+		return "redirect:list";
+	}
+	
+	
+	//업데이트 폼을 띄우는 것이기 때문에 @GetMapping
+	@GetMapping("/kakao/updateform")
+	// MyCarDto dto=dao.getData(num);은 생성만 해주기 때문에 저장하기 위해(넘겨주기 위해) Model을 인자값으로 하나 더 넣어줌
+	public String uform(@RequestParam String num,Model model)
+	{
+		MyCarDto dto=dao.getData(num);
+		
+		model.addAttribute("dto", dto);
+		
+		return "car/updateform";
+	}
+	
+	@PostMapping("/kakao/update")
+	public String update(@ModelAttribute MyCarDto dto)
+	{
+		dao.updateCar(dto);
 		
 		return "redirect:list";
 	}

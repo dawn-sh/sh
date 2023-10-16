@@ -14,7 +14,8 @@
 		 예를 들면 resultType에 반환값을 적어주는데 java method 에서 void는 resultType을 안써주면된다
 		 
 		 
-		 id는 고유한 이름이어야해서 겹치면 안됨/resultType은 return 타입을 적어주는 것(인자값이라고 볼 수도 있음) -->
+		 id는 고유한 이름이어야해서 겹치면 안됨/resultType은 return 타입을 적어주는 것
+		 								parameterType은 인자값 -->
 	<select id="getAllListOfMyCar" resultType="mdto">
 		select * from mycar order by num desc
 	</select>
@@ -29,7 +30,19 @@
 		insert into mycar (carname,carprice,carcolor,carguip) values(#{carname},#{carprice},#{carcolor},#{carguip})
 	</insert>
 	
+	<!-- delete -->
 	<delete id="deleteOfMyCar" parameterType="String">
 		delete from mycar where num=#{num}
 	</delete>
+
+
+	<!-- updateform 수정폼 나타내기 -->
+	<select id="selectOneOfMyCar" resultType="mdto" parameterType="String">
+		select * from mycar where num=#{num}
+	</select>
+	
+	<!-- update -->
+	<update id="updateOfMyCar" parameterType="mdto">
+		update mycar set carname=#{carname},carprice=#{carprice},carcolor=#{carcolor},carguip=#{carguip} where num=#{num}
+	</update>
 </mapper>
