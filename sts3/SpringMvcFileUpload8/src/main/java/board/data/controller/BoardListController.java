@@ -29,7 +29,7 @@ public class BoardListController {
 		int startPage; //각블럭에서 보여질 시작페이지
 		int endPage; //각블럭에서 보여질 끝페이지
 		int startNum; //db에서 가져올 글의 시작번호(mysql은 첫글이 0,오라클은 1)
-		int perPage=3; //한페이지당 보여질 글의 갯수
+		int perPage=10; //한페이지당 보여질 글의 갯수
 		int perBlock=5; //한블럭당 보여질 페이지 개수
 
 

@@ -91,4 +91,39 @@ public class BoardDao implements BoardDaointer {
 		return session.selectList("SelectPagingOfReboard", map);
 	}
 
+	@Override
+	public BoardDto getData(int num) {
+		// TODO Auto-generated method stub
+		return session.selectOne("getDataOfReboard", num);
+	}
+
+	@Override
+	public void UpdateReadcount(int num) {
+		// TODO Auto-generated method stub
+		session.update("UpdateReadCountOfReboard", num);
+	}
+
+	@Override
+	public int getCheckPass(int num, int pass) {
+		// TODO Auto-generated method stub
+		HashMap<String, Integer> map=new HashMap<String, Integer>();
+		
+		map.put("num", num);
+		map.put("pass", pass);
+		
+		return session.selectOne("checkpassEqualOfReboard", map);
+	}
+
+	@Override
+	public void updateReboard(BoardDto dto) {
+		// TODO Auto-generated method stub
+		session.update("updateOfReboard", dto);
+	}
+
+	@Override
+	public void deleteReboard(int num) {
+		// TODO Auto-generated method stub
+		session.delete("deleteOfReboard", num);
+	}
+
 }

@@ -62,7 +62,8 @@ public class BoardWriteController {
 	@PostMapping("/board/insert")
 	public String insert(@ModelAttribute BoardDto dto,
 			@RequestParam ArrayList<MultipartFile> uimage,
-			HttpSession session)
+			HttpSession session,
+			@RequestParam String currentPage)
 	{
 		//실제경로
 		String path=session.getServletContext().getRealPath("/WEB-INF/photo");
@@ -103,6 +104,9 @@ public class BoardWriteController {
 		//insert
 		dao.insertReboard(dto);
 		
-		return "redirect:list"; //content 일단 없으니까 목록으로
+		//insert는 num값을 넣을때 항상 maxNum으로 db에 들어가기 때문에 MaxNum으로 값 값 넘겨줘서 content로 넘어가게 해줘야한다
+		int num=dao.getMaxNum();
+		
+		return "redirect:content?num="+num+"&currentPage="+currentPage; //content 일단 없으니까 목록으로
 	}
 }

@@ -12,9 +12,23 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<script type="text/javascript">
-		alert("비밀번호가 맞지 않습니다");
-		history.back();
-	</script>
+	<div style="margin: 200px 200px;">
+		<form action="delpass" method="post">
+			<input type="hidden" name="num" value="${num }">
+			<input type="hidden" name="currentPage" value="${currentPage }">
+			
+			<div class="alert alert-danger" style="width: 300px; font-size: 1.3em;">
+				<b>비밀번호를 입력해 주세요</b>
+			</div>
+			<div class="d-inline-flex">
+				<input type="password" name="pass" class="form-control"
+				style="width: 120px;" required="required">&nbsp;
+				
+				<button type="submit" class="btn btn-outline-danger">삭제하기</button>
+				<button type="button" class="btn btn-outline-secondary"
+				onclick="history.back()">이전으로</button>
+			</div>
+		</form>
+	</div>
 </body>
 </html>

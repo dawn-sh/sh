@@ -32,4 +32,33 @@
 	<select id="SelectPagingOfReboard" resultType="bdto" parameterType="HashMap">
 		select * from reboard order by regroup desc,restep asc limit #{start},#{perpage}
 	</select>
+	
+	<!-- 1개의 dto값 얻기 -->
+	<select id="getDataOfReboard" parameterType="int" resultType="bdto">
+		select * from reboard where num=#{num}
+	</select>
+	
+	<!-- readcount 증가
+		 sql문에서만 인자값이나 결과값으로 넘어가는데 2가지 이상일 경우 Map 사용 -->
+	<update id="UpdateReadCountOfReboard" parameterType="int">
+		update reboard set readcount=readcount+1 where num=#{num}
+	</update>
+	
+	<!-- passform -->
+	<select id="checkpassEqualOfReboard" parameterType="HashMap" resultType="int">
+		select count(*) from reboard where num=#{num} and pass=#{pass}
+	</select>
+	
+	<update id="updateOfReboard" parameterType="bdto">
+		update reboard set subject=#{subject},content=#{content}
+		<if test="photo!='no'"> <!-- photo!='no' 조건이 no일 경우 / 두가지 경우 모두 no나 null이 아닐경우 즉 사진이 있는 경우만 수정해준다는 조건
+									 이렇게 조건 주면 기존 사진을 수정폼에 불러오지 않고 수정을 안해도 기존 사진이 남아있을 수 있다 -->
+		,photo=#{photo}
+		</if>
+		where num=#{num}
+	</update>
+	
+	<delete id="deleteOfReboard" parameterType="int">
+		delete from reboard where num=#{num}
+	</delete>
 </mapper>
