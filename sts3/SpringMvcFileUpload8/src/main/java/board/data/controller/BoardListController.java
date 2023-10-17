@@ -64,11 +64,6 @@ public class BoardListController {
 		
 		
 		
-		
-		model.addObject("totalCount", totalCount);
-		
-		
-
 		model.addObject("totalCount", totalCount);
 		model.addObject("list", list);
 		model.addObject("startPage", startPage);
