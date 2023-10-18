@@ -18,7 +18,16 @@ public class BoardDto {
 	private Timestamp writeday;
 	
 	
+	private int acount;//제목에 댓글 갯수 추가용 변수
 	
+	
+	
+	public int getAcount() {
+		return acount;
+	}
+	public void setAcount(int acount) {
+		this.acount = acount;
+	}
 	public int getNum() {
 		return num;
 	}

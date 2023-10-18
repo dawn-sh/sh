@@ -57,6 +57,11 @@
 							<!-- 제목...여기 누르면 내용 보기로... -->
 							<a href="content?num=${dto.num }&currentPage=${currentPage}">${dto.subject }</a>
 							
+							<!-- 댓글갯수 -->
+							<c:if test="${dto.acount>0 }">
+								<a style="color: red;" href="content?num=${dto.num }&currentPage=${currentPage}#answer">[${dto.acount }]</a> <!-- #answer를 추가하면 content내용이 엄청 많아도 이 값을 누를때 바로 댓글창이 화면에 보이게 이동해짐 -->
+							</c:if>
+							
 							<!-- 사진이 있을 경우 아이콘 표시 -->
 							<c:if test="${dto.photo!='no' }">
 								<i class="bi bi-image-fill"></i>

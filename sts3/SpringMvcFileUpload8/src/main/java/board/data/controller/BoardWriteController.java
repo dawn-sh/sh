@@ -45,7 +45,7 @@ public class BoardWriteController {
 		System.out.println(currentPage+","+num);
 		
 		//입력폼에 hidden으로 넣어줘야함...답글일때 대비
-		model.addObject("currentPage", currentPage==null?"1":"currentPage"); //1페이지일경우:n번째페이지일 경우
+		model.addObject("currentPage", currentPage==null?"1":currentPage); //1페이지일경우:n번째페이지일 경우
 		model.addObject("num", num==null?"0":num); //0이어야 dao에서 새글로 인식 가능
 		model.addObject("regroup", regroup==null?"0":regroup);
 		model.addObject("restep", restep==null?"0":restep);
