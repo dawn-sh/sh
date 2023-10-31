@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+	"-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+	"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	<definition name="layout1" template="/WEB-INF/layout/layout1.jsp"> <!-- layout 만들때 이렇게 세팅 -->
+		<put-attribute name="title" value="/WEB-INF/layout/title.jsp"/>
+		<put-attribute name="menu" value="/WEB-INF/layout/menu.jsp"/>
+		<put-attribute name="main" value="/WEB-INF/layout/main.jsp"/>
+		<put-attribute name="info" value="/WEB-INF/layout/info.jsp"/>
+		<put-attribute name="footer" value="/WEB-INF/layout/footer.jsp"/>
+	</definition>
+	
+	<!-- <definition name="home.tiles" extends="layout1"> name은 mapping경로 /home.tiles라고하면 layout1을 가져온다
+		<put-attribute name="main" value="/WEB-INF/layout/main.jsp"/> 뭘 누르든 main에 나타나게 할거야
+	</definition>
+	
+	<definition name="list.tiles" extends="layout1">
+		<put-attribute name="main" value="/WEB-INF/board/list.jsp"/> main에 board/list 나타나게 할거야
+	</definition>
+	
+	<definition name="input.tiles" extends="layout1"> input.tiles라고하면 layout1을 가져온다
+		<put-attribute name="main" value="/WEB-INF/board/addform.jsp"/> main에 board/addform 나타나게 할거야
+	</definition> -->
+	
+	<!-- 위에 것들을 wild card 형식으로 바꾼다 -->
+	<!-- layout 1개에 이거 1개 필요 -->
+	<definition name="/*/*" extends="layout1"> <!-- /*/* -> 매크로 형식 -->
+		<put-attribute name="main" value="/WEB-INF/{1}/{2}.jsp"/> <!-- /WEB-INF/{1}/{2}.jsp 이렇게하면 /WEB-INF 생략하고 {1}[2}만 입력해주면 된다
+																	   /WEB-INF/{1}/{2}.jsp -> 포워드 주소 -->
+	</definition>
+	
+	
+	
+	<!-- 레이아웃2 -->
+	<definition name="layout2" template="/WEB-INF/layout/layout2.jsp"> <!-- layout 만들때 이렇게 세팅 -->
+		<put-attribute name="title2" value="/WEB-INF/layout/title2.jsp"/>
+		<put-attribute name="menu2" value="/WEB-INF/layout/menu2.jsp"/>
+		<put-attribute name="main" value="/WEB-INF/layout/main.jsp"/>
+	</definition>
+	
+	<!-- wild card 레이아웃2 -->
+	<definition name="/sub/*/*" extends="layout2">	<!-- layout1의 name="/*/*"랑 구분 짓기 위해서 앞에 /sub 추가 ... controller에 실제주소 적는 곳에 /sub/*/*형식으로 적어주면 된다 -->
+		<put-attribute name="main" value="/WEB-INF/{1}/{2}.jsp"/>
+	</definition>
+	
+	
+	
+	<!-- 레이아웃3 -->
+	<definition name="layout3" template="/WEB-INF/layout/layout3.jsp"> <!-- layout 만들때 이렇게 세팅 -->
+		<put-attribute name="title2" value="/WEB-INF/layout/title2.jsp"/>
+		<put-attribute name="menu2" value="/WEB-INF/layout/menu2.jsp"/>
+		<put-attribute name="main" value="/WEB-INF/layout/main.jsp"/>
+	</definition>
+	
+	<!-- wild card 레이아웃2 -->
+	<definition name="/tri/*/*" extends="layout3">	<!-- layout1의 name="/*/*"랑 구분 짓기 위해서 앞에 /sub 추가 ... controller에 실제주소 적는 곳에 /sub/*/*형식으로 적어주면 된다 -->
+		<put-attribute name="main" value="/WEB-INF/{1}/{2}.jsp"/>
+	</definition>
+	
+	
+	
+	
+</tiles-definitions>

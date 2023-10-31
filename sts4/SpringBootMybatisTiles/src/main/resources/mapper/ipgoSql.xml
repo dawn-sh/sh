@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="boot.data.mapper.IpgoMapperInter">
+	<!-- namespace를 써줌으로써 sql id의 중복을 막아준다 / namespace가 고유의 아이디값으로 길게 쓰면 sql id의 길이를 줄여줄 수 있다 -->
+	<select id="getTotalCount" resultType="int">
+		select count(*) from ipgo
+	</select>
+	<insert id="insertIpgo" parameterType="IpgoDto">
+		insert into ipgo (sangpum,price,photoname,ipgoday) values(#{sangpum},#{price},#{photoname},now())
+	</insert>
+	<select id="getAllIpgoes" resultType="IpgoDto">
+		select * from ipgo order by num
+	</select>
+	<select id="getDataIpgo" parameterType="String" resultType="IpgoDto">
+		select * from ipgo where num=#{num}
+	</select>
+	<delete id="deleteIpgo" parameterType="String">
+		delete from ipgo where num=#{num}
+	</delete>
+	<update id="updateIpgo" parameterType="IpgoDto">
+		update ipgo set sangpum=#{sangpum},price=#{price}
+		<if test="photoname!='no'">
+			,photoname=#{photoname}
+		</if>
+		where num=#{num}
+	</update>
+</mapper>

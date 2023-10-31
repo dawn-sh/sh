@@ -1,0 +1,26 @@
+#yml버전 자동 들여쓰기 적용
+#tomcat port
+server:
+  port: 9001
+#jsp - yml에서는 앞에가 같으면 띄어서 적어짐
+spring:
+  mvc:
+    view:
+      prefix: /WEB-INF/
+      suffix: .jsp
+  devtools:
+    livereload:
+      enabled: true
+#mysql
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/coffee?serverTimezone=Asia/Seoul
+    username: tjdgus
+    password: 1234
+
+    
+#mybatis setting
+mybatis:
+  type-aliases-package: data.model.* #data.model.mapper(dao역할)/data.model.dto 를 등록한 것
+  mapper-locations:
+  - /mapper/**/*.xml #src/main/resources 안 mapper 폴더 안 .xml 파일 위치 등록

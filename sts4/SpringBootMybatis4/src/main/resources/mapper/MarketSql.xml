@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <!-- reference Maven 들어가서 Download Artifact Javadoc 체크해주면 빨간줄 사라짐 -->
+<mapper namespace="data.model.mapper.MarketMapperInter">
+	<select id="getTotalCount" resultType="int"> 
+		select count(*) from market
+	</select>
+	<select id="getAllSangpums" resultType="mdto"> <!-- dto에 @Alias("mdto")로 설정해줌 -->
+		select * from market order by num
+	</select>
+	<insert id="insertMarket" parameterType="mdto">
+		insert into market (price,sang,photoname,ipgoday) values(#{price},#{sang},#{photoname},now())
+	</insert>
+	<delete id="deleteMarket" parameterType="String">
+		delete from market where num=#{num}
+	</delete>
+	<select id="getData" resultType="mdto" parameterType="String">
+		select * from market where num=#{num}
+	</select>
+</mapper>

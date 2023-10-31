@@ -43,7 +43,10 @@
 			<c:forEach var="dto" items="${list }" varStatus="i">
 				<tr>
 					<td>${i.count }</td>
-					<td>${dto.carname }</td>
+					<td>
+						<a href="detail?num=${dto.num }"><img alt="" src="../save/${dto.carphoto }" style="width: 30px;"></a>
+						${dto.carname }
+					</td>
 					<td><div style="background-color: ${dto.carcolor}" class="box"></div></td>
 					<td>
 						<fmt:formatNumber value="${dto.carprice }" type="currency"/>
