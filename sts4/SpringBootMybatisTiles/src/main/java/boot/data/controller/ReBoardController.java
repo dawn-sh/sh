@@ -7,7 +7,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class ReBoardController {
 
-	@GetMapping("/board/list")
+	@GetMapping("/reboard/list")
 	public ModelAndView list()
 	{
 		ModelAndView model=new ModelAndView();

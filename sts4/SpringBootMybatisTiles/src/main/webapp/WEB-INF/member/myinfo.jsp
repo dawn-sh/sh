@@ -8,6 +8,7 @@
 <meta charset="UTF-8">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@300&family=Gaegu:wght@300&family=Nanum+Pen+Script&family=Sunflower:wght@300&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <title>Insert title here</title>
 <script type="text/javascript">
@@ -76,6 +77,31 @@
 		});
 		
 		
+		$(".btnmodify").click(function() {
+		    var num = $(this).attr("num");
+			
+			//alert(name+addr+email+num);
+		    $("#modalmodify").modal("show");
+		    
+		    $("#btnajaxmodify").click(function(){
+		    	
+		    	var name=$("#ajaxname").val();
+				var addr=$("#ajaxaddr").val();
+				var email=$("#ajaxemail").val();
+				
+		    	$.ajax({
+		    		
+		    		type:"get",
+		    		dataType:"html",
+		    		url:"ajaxupdate",
+		    		data:{"num":num,"name":name,"addr":addr,"email":email},
+		    		success:function(){
+		    			
+		    			location.reload();
+		    		}
+		    	});
+		    });
+		});
 		
 		
 	});
@@ -116,14 +142,61 @@
 				</tr>
 				<tr align="center">
 					<td>
-						<button type="button" class="btn btn-warning btn-sm"
-							onclick="location.href=''">수정</button>
-						<button type="button" class="btn btn-danger btn-sm btndelete" num=${dto.num }>삭제</button>
+						<button type="button" class="btn btn-warning btn-sm btnmodify" num="${dto.num }" data-bs-dismiss="modal" data-bs-target="#modalmodify">수정</button>
+						<button type="button" class="btn btn-danger btn-sm btndelete" num="${dto.num }">삭제</button>
 						<!-- 버튼에 이벤트가 2가지면 충돌날 수 있다 (onclick,$(".btndelete")) -->
 					</td>
 				</tr>
 			</table>
+
+			<!-- The Modal -->
+			<div class="modal" id="modalmodify">
+				<div class="modal-dialog modal-sm">
+					<div class="modal-content">
+
+						<!-- Modal Header -->
+						<div class="modal-header">
+							<h4 class="modal-title">AjaxModify</h4>
+							<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+						</div>
+
+						<!-- Modal body -->
+						<div class="modal-body">
+							<table class="table table-bordered">
+								<tr>
+									<td>
+										<input type="text" class="form-control" id="ajaxname" value="${dto.name }">
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<input type="text" class="form-control" id="ajaxaddr" value="${dto.addr }">
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<input type="text" class="form-control" id="ajaxemail" value="${dto.email }">
+									</td>
+								</tr>
+							</table>
+						</div>
+
+						<!-- Modal footer -->
+						<div class="modal-footer">
+							<button type="button" class="btn btn-outline-info" id="btnajaxmodify"
+								data-bs-dismiss="modal">Modify</button>
+							<button type="button" class="btn btn-danger"
+								data-bs-dismiss="modal">Close</button>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+
 		</c:if>
 	</c:forEach>
+
+
 </body>
 </html>

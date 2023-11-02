@@ -176,4 +176,15 @@ public class MemberController {
 		session.removeAttribute("saveok");
 		session.removeAttribute("loginphoto");
 	}
+	
+	
+	@GetMapping("/member/ajaxupdate")
+	@ResponseBody
+	public void ajaxupdate(@ModelAttribute MemberDto dto)
+	{
+		service.updateMember(dto);
+	}
+	
+	
+	
 }
