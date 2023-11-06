@@ -90,6 +90,7 @@ div.rightcolumn {
   width: 80%;
   background-color: #f1f1f1;
   padding-left: 20px;
+  font-size: 1.7em;
 }
 
 /* Add a card effect for articles */

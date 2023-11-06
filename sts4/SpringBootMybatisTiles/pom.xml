@@ -77,8 +77,14 @@
 		</dependency>
 		
 		
-		
-		
+		<!-- 스마트게시판(se) / webapp안에 se 넣고 save(파일업로드용) 폴더 생성 -->
+		<!-- cos -->
+		<dependency>
+		    <groupId>servlets.com</groupId>
+		    <artifactId>cos</artifactId>
+		    <version>05Nov2002</version>
+		</dependency>
+
 		
 		
 		

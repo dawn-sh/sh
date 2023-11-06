@@ -12,6 +12,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<button type="button" class="btn btn-outline-info"
+	onclick="location.href='form'">Write</button>
 </body>
 </html>

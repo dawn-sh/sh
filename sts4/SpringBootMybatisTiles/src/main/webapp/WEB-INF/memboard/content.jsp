@@ -56,15 +56,52 @@
 		});
 		
 		//댓글 수정창 띄우기
-		
+		$(document).on("click","i.amod",function(){
+			
+			idx=$(this).attr("idx");
+			//alert(idx);
+			
+			$.ajax({
+				
+				type:"get",
+				dataType:"json",
+				url:"/mbanswer/adata",
+				data:{"idx":idx},
+				success:function(res){
+					
+					$("#ucontent").val(res.content);
+				}
+			});
+			
+			$("#mbUpdateModal").modal("show"); //ajax 끝나고 모달창 띄워줘야함
+		});
 		
 		//댓글 수정
+		$(document).on("click","#btnupdate",function(){
+			
+			var content=$("#ucontent").val();
+			//alert(idx+","+content);
+			
+			$.ajax({
+				
+				type:"post",
+				dataType:"html",
+				url:"/mbanswer/aupdate",
+				data:{"idx":idx,"content":content},
+				success:function(){
+					
+					
+					list();
+					$("#mbUpdateModal").modal("hide");
+				}
+			});
+		});
 		
 		
 		//댓글 삭제
-		$(document).on("click",".adel",function(){
+		$(document).on("click","i.adel",function(){
 			
-			var idx=$(".adel").attr("idx");
+			var idx=$(this).attr("idx");
 			//alert(idx);
 			var con=confirm("정말 삭제하시겠습니까?");
 			
@@ -205,5 +242,50 @@
 			</tr>
 		</table>
 	</div>
+
+
+
+
+
+
+	<!-- The Modal -->
+	<div class="modal" id="mbUpdateModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+
+				<!-- Modal Header -->
+				<div class="modal-header">
+					<h4 class="modal-title">Comment Modify</h4>
+					<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+				</div>
+
+				<!-- Modal body -->
+				<div class="modal-body">
+					<input type="text" id="ucontent" class="form-control">
+				</div>
+
+				<!-- Modal footer -->
+				<div class="modal-footer">
+					<button type="button" class="btn btn-warning" id="btnupdate">modify</button>
+					<button type="button" class="btn btn-danger"
+						data-bs-dismiss="modal">Close</button>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>

@@ -12,6 +12,44 @@
 <title>Insert title here</title>
 </head>
 <body>
-
+	<div style="margin: 50px 100px; width: 600px;">
+		<form action="insert" method="post" enctype="multipart/form-data">
+			<!-- hidden 5개 -->
+			<input type="hidden" name="num" value="${num }">
+			<input type="hidden" name="regroup" value="${regroup }">
+			<input type="hidden" name="restep" value="${restep }">
+			<input type="hidden" name="relevel" value="${relevel }">
+			<input type="hidden" name="currentPage" value="${currentPage }">
+			<!-- hidden 2개 id,name session으로 받아오기 때문 -->
+			<input type="hidden" name="id" value="${sessionScope.myid }">
+			<input type="hidden" name="name" value="${sessionScope.loginname }">
+			
+			<table class="table table-bordered">
+				<tr>
+					<th width="100">Subject</th>
+					<td>
+						<input type="text" name="subject" class="form-control" required="required"
+						value="${subject }"> <!-- 답글일 경우 controller에서 원글을 가져오기로 했기 때문에 value값에 넣어줌 / 새글일 경우 새글 제목 들어감 -->
+					</td>
+				</tr>
+				<tr>
+					<th width="100">Upload File</th>
+					<td>
+						<input type="file" name="upload" class="form-control" multiple="multiple">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<textarea style="width: 600px; height: 150px;" name="content" class="form-control"></textarea>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" align="center">
+						<button type="submit" class="btn btn-outline-info">Write</button>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
 </body>
 </html>
