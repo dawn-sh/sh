@@ -17,7 +17,7 @@
 		<if test="searchcolumn!=null and searchword!=null"> <!-- column명을 표시할 땐 $로 표시 / 컬럼에서 단어검색 -->
 			where ${searchcolumn} like concat('%',#{searchword},'%')
 		</if>
-		order by regroup desc,restep asc limit #{start},#{perpage}
+		order by regroup desc,restep asc limit #{startnum},#{perpage}
 	</select>
 	<insert id="insertReboard" parameterType="reboard"> <!-- 전체적인 values로 insert하면 default 0도 맞춰서 넣어줘야함 -->
 		insert into reminiboard values(null,#{id},#{name},#{subject},#{content},#{photo},0,0,#{regroup},#{restep},#{relevel},now())
@@ -29,7 +29,7 @@
 		update reminiboard set readcount=readcount+1 where num=#{num}
 	</update>
 	<select id="getData" parameterType="int" resultType="reboard">
-		select * from reminiboard from num=#{num}
+		select * from reminiboard where num=#{num}
 	</select>
 	<update id="updateReboard" parameterType="reboard">
 		update reminiboard set subject=#{subject},content=#{content}
