@@ -15,3 +15,22 @@
   height: 100px;
   float: left;
 }
+
+img.photo{
+  width: 130px;
+  height: 180px;
+  border: 2px solid gray;
+  border-radius: 30px 10px 70px 80px;
+  margin-left: 10px;
+}
+
+li.data{
+  list-style: none;
+  margin-top: 5px;
+  font-size: 20px;
+  width: 200px;
+  background-color: cadetblue;
+  border: 1px solid gray;
+  text-align: center;
+  cursor: pointer;
+}
