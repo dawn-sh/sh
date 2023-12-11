@@ -29,6 +29,7 @@ function OneApp(props) {
     }
 
     //클릭시 삭제
+    //index가 클릭한 이름
     const dataRemove=(index)=>{
         
         console.log("remove: "+index);
@@ -40,6 +41,8 @@ function OneApp(props) {
         ]);*/ //index번지만 빼고 잘라서 다시 넣음
 
         //방법2...filter
+        //랜더링...화면상에 변경(set)을 해준다 -> filter를 받을건데 선택한 index를 제외하고 다시 랜더링(복사)받는다
+        //i값은 기존에 넘겨주는 index와 겹치기 때문에 다른 변수로 주어준 것
         setNames(names.filter((item,i)=>i!==index)) //선택한 인덱스만 지워줌
 
     }
