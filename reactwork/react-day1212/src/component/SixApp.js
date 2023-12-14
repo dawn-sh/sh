@@ -6,6 +6,7 @@ import SixSubApp3 from './SixSubApp3';
 //props라는 변수로 <SixSubApp name="진평" age="23"/>(SixSubApp)에 name과 age 전달 가능
 function SixApp(props) {
 
+    //자식 파일에서는 값 변경 불가
     //자식이 값 변경할 수 있게 부모에서 이벤트로 넘겨야한다
     const [number,setNumber]=useState(10);
 
@@ -19,6 +20,8 @@ function SixApp(props) {
         setNumber(number-1);
     }
 
+
+    // 자식은 부모한테만 import 후 app.js에서는 부모만 import 되어있어야한다
 
     return (
         <div>
