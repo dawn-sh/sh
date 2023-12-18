@@ -7,10 +7,11 @@ import Root from './Root';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    {/* Root로 layout 설정 */}
+  // 클래스때문에 있던거지만 지금은 shop list 호출시 2번 호출되기 때문에 지워주면 1번만 호출되는 것을 확인 가능
+  // <React.StrictMode>
+    /* Root로 layout 설정 */
     <Root/>
-  </React.StrictMode>
+  // </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

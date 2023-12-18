@@ -22,7 +22,8 @@ function RouteMain(props) {
                     {/* shop */}
                     <Route path='/shop/list' element={<Shop/>}/>
                     <Route path='/shop/form' element={<ShopForm/>}/>
-                    {/* :num은 num값을 넘기는 것 */}
+                    {/* :num은 num값을 넘기는 것
+                        backend에서 먼저 num값 넘겨주는 것 처리해줘야함 */}
                     <Route path='/shop/detail/:num' element={<ShopDetail/>}/>
 
 

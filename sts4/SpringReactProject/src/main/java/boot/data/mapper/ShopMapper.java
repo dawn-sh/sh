@@ -11,4 +11,5 @@ public interface ShopMapper {
 
 	public void insertShop(ShopDto dto);
 	public List<ShopDto> getShopDataes();
+	public ShopDto getData(int num);
 }
