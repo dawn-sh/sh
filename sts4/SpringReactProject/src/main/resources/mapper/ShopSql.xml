@@ -12,4 +12,7 @@
 	<select id="getData" parameterType="int" resultType="shop">
 		select * from reactshop where num=#{num}
 	</select>
+	<delete id="deleteShop" parameterType="int">
+		delete from reactshop where num=#{num}
+	</delete>
 </mapper>

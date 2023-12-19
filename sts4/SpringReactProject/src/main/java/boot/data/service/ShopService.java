@@ -32,4 +32,10 @@ public class ShopService implements ShopServiceInter {
 		return shopMapper.getData(num);
 	}
 
+	@Override
+	public void deleteShop(int num) {
+		// TODO Auto-generated method stub
+		shopMapper.deleteShop(num);
+	}
+
 }

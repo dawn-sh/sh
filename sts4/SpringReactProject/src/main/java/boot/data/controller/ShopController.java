@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -85,5 +86,23 @@ public class ShopController {
 	public ShopDto getData(int num)
 	{
 		return shopService.getData(num);
+	}
+	
+	@DeleteMapping("/delete")
+	public void deleteShop(int num,HttpServletRequest request)
+	{
+		//save경로 구하기
+		String path=request.getServletContext().getRealPath("/save");
+		
+		//num에 해당하는 photo
+		String photo=shopService.getData(num).getPhoto();
+		
+		//해당 파일이 존재할 경우 삭제
+		File file=new File(path+"/"+photo);
+		if(file.exists())
+			file.delete();
+		
+		//db삭제
+		shopService.deleteShop(num);
 	}
 }

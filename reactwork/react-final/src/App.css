@@ -66,3 +66,9 @@ img.small{
   border: 1px solid gray;
   margin-right: 10px;
 }
+
+img.large{
+  width: 300px;
+  margin-left: 10px;
+  margin-top: 10px;
+}

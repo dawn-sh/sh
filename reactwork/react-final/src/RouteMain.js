@@ -3,7 +3,7 @@ import { Info, Title, Menu, Main, About } from './components';
 import { Routes, Route } from 'react-router-dom';
 import Shop from './shop/Shop';
 import Board from './board/Board';
-import Member from './board/Board';
+import Member from './member/Member';
 import Login from './login/Login';
 import { ShopDetail, ShopForm } from './shop';
 

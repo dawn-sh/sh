@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="boot.data.mapper.MemberMapper">
+	<insert id="insertMember" parameterType="member">
+		insert into member (name,id,pass,addr,email,gaipday) values(#{name},#{id},#{pass},#{addr},#{email},now())
+	</insert>
+	<select id="getAllMembers" resultType="member">
+		select * from member order by id
+	</select>
+	<select id="getSearchId" parameterType="String" resultType="int">
+		select count(*) from member where id=#{id}
+	</select>
+	<select id="getName" parameterType="String" resultType="String">
+		select name from member where id=#{id}
+	</select>
+	<select id="loginPassCheck" parameterType="Map" resultType="int"> <!-- mybatis룰에 따라서 parameterType에 1가지만 쓰기때문 -->
+		select count(*) from member where id=#{id} and pass=#{pass} 
+	</select>
+</mapper>
