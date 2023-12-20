@@ -5,10 +5,12 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import boot.data.dto.MemberDto;
 import boot.data.mapper.MemberMapper;
 
+@Service
 public class MemberService implements MemberServiceInter {
 	
 	@Autowired
@@ -47,6 +49,12 @@ public class MemberService implements MemberServiceInter {
 		map.put("pass", pass);
 		
 		return mapper.loginPassCheck(map);
+	}
+
+	@Override
+	public void delete(int num) {
+		// TODO Auto-generated method stub
+		mapper.delete(num);
 	}
 
 }

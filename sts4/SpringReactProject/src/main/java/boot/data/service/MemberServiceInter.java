@@ -12,4 +12,5 @@ public interface MemberServiceInter {
 	public int getSearchId(String id);
 	public String getName(String id);
 	public int loginPassCheck(String id,String pass);
+	public void delete(int num);
 }

@@ -15,4 +15,6 @@ public interface MemberMapper {
 	public int getSearchId(String id);
 	public String getName(String id);
 	public int loginPassCheck(Map<String, String> map);
+	//삭제
+	public void delete(int num);
 }

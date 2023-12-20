@@ -6,6 +6,7 @@ import Board from './board/Board';
 import Member from './member/Member';
 import Login from './login/Login';
 import { ShopDetail, ShopForm } from './shop';
+import MemberList from './member/MemberList';
 
 function RouteMain(props) {
     return (
@@ -30,7 +31,15 @@ function RouteMain(props) {
 
 
                     <Route path='/board/list' element={<Board/>}/>
+
+
+                    {/* member */}
                     <Route path='/member/form' element={<Member/>}/>
+                    <Route path='/member/list' element={<MemberList/>}/>
+                    
+
+
+
                     <Route path='/login' element={<Login/>}/>
                     <Route path='/about' element={<About/>}/>
                     <Route path='*' element={

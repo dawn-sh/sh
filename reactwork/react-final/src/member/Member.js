@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function Member(props) {
 
+
+    const navi=useNavigate();
 
     const [data,setData]=useState({
         id:'',
@@ -9,7 +13,8 @@ function Member(props) {
         pass:'',
         email:'',
         hp:'',
-        addr:''
+        addr:'',
+        emailok:false
     });
 
     const [passOk,setPassOk]=useState(false);
@@ -41,7 +46,25 @@ function Member(props) {
             alert("Please check pass valid");
             return;
         }
+
+        //insert
+        const url="http://localhost:9000/member/insert";
+        axios.post(url,data)
+        .then(rex=>{
+            alert("insert성공!!");
+            //이동
+            navi("/login");
+        })
+
+        if(!data.emailok)
+        {
+            //null 값 체크
+            alert("E-mail check please");
+            return;
+        }
     }
+
+    
 
 
     //data 입력시 호출
@@ -85,21 +108,45 @@ function Member(props) {
     }
 
 
+    //id 중복체크 확인
+    const onIdValidCheck=()=>{
+
+        const url="http://localhost:9000/member/idsearch?id="+data.id;
+
+        axios.get(url)
+        .then(res=>{
+
+            console.log(res.data); // 0 or 1
+
+            if(res.data===0)
+            {
+                setBtnOk(true);
+                alert("You can use this ID");
+            }
+            else
+            {
+                setBtnOk(false);
+                alert("You can't use this ID");
+            }
+        })
+    }
+
+
 
     return (
         <div>
             <form onSubmit={onSave}>
-                <table class="table table-bordered" style={{ width: '600px' }}>
+                <table class="table table-stripped" style={{ width: '600px' }}>
                     <caption align="top"><b>회원가입</b></caption>
                     <tbody>
 
                         <tr >
                             <th width='100'>아이디</th>
-                            <td>
+                            <td className='d-inline-flex'>
                                 <input type='text' className='form-control' style={{ width: '130px' }}
                                     name='id' required onChange={onDataChange}/>
                                 <button type='button' className='btn btn-danger'
-                                    style={{ marginLeft: '5px' }}>중복체크</button>
+                                    style={{ marginLeft: '5px' }} onClick={onIdValidCheck}>중복체크</button>
                             </td>
                         </tr>
 
@@ -114,21 +161,21 @@ function Member(props) {
 
                         <tr>
                             <th width='100'>비밀번호</th>
-                            <td>
+                            <td className='d-inline-flex'>
                                 <input type='password' className='form-control' style={{ width: '130px' }}
                                     name='pass' required onChange={onDataChange}/>
                                 <input type='password' className='form-control' style={{ width: '130px' }}
                                     required onChange={onPassChange}/>
 
 
-                                <span style={{ marginLeft: '5px', color: 'red' }}>비밀번호 확인할예정</span>
+                                <span style={{ marginLeft: '5px', color: 'red' }}>{passOk?'ok':'fail'}</span>
                             </td>
                         </tr>
 
 
                         <tr>
                             <th>이메일</th>
-                            <td>
+                            <td className='d-inline-flex'>
                                 <input type='text' className='form-control' style={{ width: '100px' }} required
                                 onChange={(e)=>{
                                     setEmail1(e.target.value);
@@ -146,6 +193,15 @@ function Member(props) {
                                     <option value='gmail.com'>구글</option>
                                     <option value='daum.net'>한메일</option>
                                 </select>
+                                <button type='button' className='btn btn-danger'
+                                onClick={()=>{
+                                    setData({
+                                        ...data,
+                                        email:`${email1}@${email2}`,
+                                        emailok:true
+                                    });
+                                    alert("E-mail valid check complete");
+                                }}>E-mail check</button>
                             </td>
                         </tr>
 
@@ -171,7 +227,9 @@ function Member(props) {
                         <tr>
                             <td colSpan={2} style={{ textAlign: 'center' }}>
                                 <button type='submit' className='btn btn-info'>가입하기</button>
-                                <button type='button' className='btn btn-success'>목록</button>
+                                <button type='button' className='btn btn-success' onClick={()=>{
+                                    navi("/member/list");
+                                }}>목록</button>
                             </td>
                         </tr>
                     </tbody>
